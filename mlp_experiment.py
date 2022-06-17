@@ -1,4 +1,5 @@
 import copy
+from tqdm import tqdm
 import pandas as pd
 import torch
 import torch.nn as nn
@@ -16,7 +17,7 @@ log.basicConfig(filename='log/log.txt', filemode='w', level=log.DEBUG, format=LO
 GLOB_CFG = { #训练的参数配置
     'seed': 2,
     'max_len': 100, #文本截断的最大长度
-    'epochs': 150,
+    'epochs': 20,
     'train_bs': 128, #batch_size，可根据自己的显存调整
     'valid_bs': 256,
     'test_bs': 256,
@@ -31,7 +32,7 @@ GLOB_CFG = { #训练的参数配置
     'train': True, #训练阶段为true 提交测试阶段为false
     'processing_data': False,
     'seq_length':300,
-    'sample_n': 200 # 抽取的样本条数，None表示抽取全部样本
+    'sample_n': 100 # 抽取的样本条数，None表示抽取全部样本
 }
 
 seed_everything(GLOB_CFG['seed'])
@@ -51,7 +52,7 @@ data_set = MyDataset(train_df, test_df, val_df, GLOB_CFG)
 MLP_CFG = GLOB_CFG.copy()
 log.basicConfig(filename='log/mlp_log.txt', filemode='w', level=log.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 MLP_CFG['log'] = log
-MLP_CFG['hidden_dim'] = 128
+MLP_CFG['hidden_dim'] = 512
 MLP_CFG['feature_count'] = 1
 
 
@@ -61,7 +62,7 @@ model = MlpNeuralNet(MLP_CFG['seq_length']*MLP_CFG['feature_count'],\
 optimizer = AdamW(model.parameters(), lr=MLP_CFG['lr'], weight_decay=MLP_CFG['weight_decay'])
 criterion = nn.CrossEntropyLoss()
 
-for epoch in range(MLP_CFG['epochs']):
+for epoch in tqdm(range(MLP_CFG['epochs'])):
         train_loss, train_acc = train_model(model,optimizer,  data_set,device,criterion, MLP_CFG)
         val_loss, val_acc = test_model(model, data_set,criterion, device,MLP_CFG)
         best_acc = 0
