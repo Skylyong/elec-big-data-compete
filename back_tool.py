@@ -47,8 +47,8 @@ def processing_data(compete_type_filename, data_filename, n=None):
     res_df.to_pickle(f"./{compete_type_filename}/{data_filename}_data.pkl")
 
 
-# processing_data('模式识别数据集', 'train', n=10)
-# processing_data('模式识别数据集', 'validation', n=10)
+processing_data('模式识别数据集', 'train', n=None)
+processing_data('模式识别数据集', 'validation', n=None)
 
 def seed_everything(seed):
     random.seed(seed)
@@ -169,8 +169,8 @@ def train_model(model,optimizer, data_set,device,criterion,CFG):  # 训练一个
         losses.update(loss.item(), y.size(0))
         accs.update(acc, y.size(0))
 
-        tk.set_postfix(loss=losses.avg, acc=accs.avg)
-        CFG['log'].info('loss:{}, acc:{}'.format(losses.avg, accs.avg))
+        tk.set_postfix(loss=losses.avg, acc=accs.avg, stage='train')
+        CFG['log'].info('train- loss:{}, acc:{}'.format(losses.avg, accs.avg))
     return losses.avg, accs.avg
 
 def test_model(model, data_set, criterion, device, CFG):  # 验证
@@ -198,7 +198,8 @@ def test_model(model, data_set, criterion, device, CFG):  # 验证
             losses.update(loss.item(), y.size(0))
             accs.update(acc, y.size(0))
 
-            tk.set_postfix(loss=losses.avg, acc=accs.avg)
+            tk.set_postfix(loss=losses.avg, acc=accs.avg, stage='val')
+            CFG['log'].info('test - loss:{}, acc:{}'.format(losses.avg, accs.avg))
     # F1,GOLD,PRED,intersection,F11,GOLD1,PRED1,intersection1 = macro_f1(pred=y_pred,gold=y_truth)
     # print('GOLD:{} {}'.format(GOLD,GOLD1))
     # print('PRED:{} {}'.format(PRED,PRED1))

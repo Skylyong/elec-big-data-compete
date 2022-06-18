@@ -1,4 +1,6 @@
 import copy
+import os
+
 from tqdm import tqdm
 import pandas as pd
 import torch
@@ -16,7 +18,7 @@ log.basicConfig(filename='log/lstm_log.txt', filemode='w', level=log.DEBUG, form
 
 CFG = {  # 训练的参数配置
     'seed': 2,
-    'epochs': 20,
+    'epochs': 100,
     'batch_size': 16, # 注意：对于lstm 训练、测试、验证的batch_size必须一致
     'train_bs': 16,  # batch_size，可根据自己的显存调整
     'valid_bs': 16,
@@ -38,6 +40,7 @@ CFG = {  # 训练的参数配置
     'lstm_num_layers': 2,
     'linear_hidden_size_1': 32,
     'linear_hidden_size_2': 8,
+    'model_save_dir': './model_saved/lstm_model/',
 }
 
 seed_everything(CFG['seed'])
@@ -62,10 +65,12 @@ model = LstmNeuralNet(CFG['feature_count'],
 optimizer = AdamW(model.parameters(), lr=CFG['lr'], weight_decay=CFG['weight_decay'])
 criterion = nn.CrossEntropyLoss()
 
+best_acc = 0
 for epoch in tqdm(range(CFG['epochs'])):
         train_loss, train_acc = train_model(model, optimizer,  data_set, device,criterion, CFG)
         val_loss, val_acc = test_model(model, data_set,criterion, device, CFG)
-        best_acc = 0
         if val_acc > best_acc:
-            torch.save(model.state_dict(), './model_saved/{}_lstm_{}.pt'.format(epoch, round(val_acc, 4)))
+            if not os.path.exists(CFG['model_save_dir']):
+                os.makedirs(CFG['model_save_dir'])
+            torch.save(model.state_dict(), '{}{}_lstm_{}.pt'.format(CFG['model_save_dir'], epoch, round(val_acc, 4)))
             best_acc = val_acc

@@ -1,4 +1,6 @@
 import copy
+import os
+
 from tqdm import tqdm
 import pandas as pd
 import torch
@@ -12,7 +14,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
-log.basicConfig(filename='log/log.txt', filemode='w', level=log.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+log.basicConfig(filename='log/mlp_log.txt', filemode='w', level=log.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 GLOB_CFG = { #训练的参数配置
     'seed': 2,
@@ -32,7 +34,8 @@ GLOB_CFG = { #训练的参数配置
     'train': True, #训练阶段为true 提交测试阶段为false
     'processing_data': False,
     'seq_length':300,
-    'sample_n': 100 # 抽取的样本条数，None表示抽取全部样本
+    'sample_n': 100, # 抽取的样本条数，None表示抽取全部样本
+    'model_save_dir': './model_saved/mlp_model/'
 }
 
 seed_everything(GLOB_CFG['seed'])
@@ -62,10 +65,12 @@ model = MlpNeuralNet(MLP_CFG['seq_length']*MLP_CFG['feature_count'],\
 optimizer = AdamW(model.parameters(), lr=MLP_CFG['lr'], weight_decay=MLP_CFG['weight_decay'])
 criterion = nn.CrossEntropyLoss()
 
+best_acc = 0
 for epoch in tqdm(range(MLP_CFG['epochs'])):
         train_loss, train_acc = train_model(model,optimizer,  data_set,device,criterion, MLP_CFG)
         val_loss, val_acc = test_model(model, data_set,criterion, device,MLP_CFG)
-        best_acc = 0
         if val_acc > best_acc:
-            torch.save(model.state_dict(), './model_saved/{}_mlp_{}.pt'.format(epoch, round(val_acc, 4)))
+            if not os.path.exists(GLOB_CFG['model_save_dir']):
+                os.makedirs(GLOB_CFG['model_save_dir'])
+            torch.save(model.state_dict(), '{}{}_mlp_{}.pt'.format(GLOB_CFG['model_save_dir'], epoch, round(val_acc, 4)))
             best_acc = val_acc
