@@ -32,7 +32,7 @@ GLOB_CFG = { #训练的参数配置
     'val_data': '模式识别数据集/validation_data.pkl',
     'log': log,
     'train': True, #训练阶段为true 提交测试阶段为false
-    'processing_data': False,
+    'processing_data': True,
     'seq_length':300,
     'sample_n': 100, # 抽取的样本条数，None表示抽取全部样本
     'model_save_dir': './model_saved/mlp_model/'
