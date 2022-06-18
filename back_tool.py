@@ -206,32 +206,32 @@ def test_model(model, data_set, criterion, device, CFG):  # 验证
     # print('F1:{} {}'.format(F1,F11))
     return losses.avg, accs.avg
 
-# for test
-GLOB_CFG = { #训练的参数配置
-    'seed': 2,
-    'max_len': 100, #文本截断的最大长度
-    'epochs': 150,
-    'train_bs': 128, #batch_size，可根据自己的显存调整
-    'valid_bs': 256,
-    'test_bs': 256,
-    'lr': 8e-6, #学习率
-    'num_workers': 0,
-    'weight_decay': 2e-4, #权重衰减，防止过拟合
-    'device': 0,
-    'train_data': '模式识别数据集/train_data.pkl',
-    'test_data': None,
-    'val_data': '模式识别数据集/validation_data.pkl',
-    'train': True, #训练阶段为true 提交测试阶段为false
-    'processing_data': False,
-    'seq_length':300
-}
-
-train_df =  pd.read_pickle(GLOB_CFG['train_data'])
-test_df = None
-val_df = pd.read_pickle(GLOB_CFG['val_data'])
-data_set = MyDataset(train_df, test_df, val_df,GLOB_CFG)
-train_loader = DataLoader(data_set, batch_size=GLOB_CFG['train_bs'], shuffle=True,
-                              num_workers=GLOB_CFG['num_workers'])
-
-for X,y in train_loader:
-    print(X,y)
+# # for test
+# GLOB_CFG = { #训练的参数配置
+#     'seed': 2,
+#     'max_len': 100, #文本截断的最大长度
+#     'epochs': 150,
+#     'train_bs': 128, #batch_size，可根据自己的显存调整
+#     'valid_bs': 256,
+#     'test_bs': 256,
+#     'lr': 8e-6, #学习率
+#     'num_workers': 0,
+#     'weight_decay': 2e-4, #权重衰减，防止过拟合
+#     'device': 0,
+#     'train_data': '模式识别数据集/train_data.pkl',
+#     'test_data': None,
+#     'val_data': '模式识别数据集/validation_data.pkl',
+#     'train': True, #训练阶段为true 提交测试阶段为false
+#     'processing_data': False,
+#     'seq_length':300
+# }
+#
+# train_df =  pd.read_pickle(GLOB_CFG['train_data'])
+# test_df = None
+# val_df = pd.read_pickle(GLOB_CFG['val_data'])
+# data_set = MyDataset(train_df, test_df, val_df,GLOB_CFG)
+# train_loader = DataLoader(data_set, batch_size=GLOB_CFG['train_bs'], shuffle=True,
+#                               num_workers=GLOB_CFG['num_workers'])
+#
+# for X,y in train_loader:
+#     print(X,y)
