@@ -47,8 +47,8 @@ def processing_data(compete_type_filename, data_filename, n=None):
     res_df.to_pickle(f"./{compete_type_filename}/{data_filename}_data.pkl")
 
 
-processing_data('模式识别数据集', 'train', n=None)
-processing_data('模式识别数据集', 'validation', n=None)
+# processing_data('模式识别数据集', 'train', n=None)
+# processing_data('模式识别数据集', 'validation', n=None)
 
 def seed_everything(seed):
     random.seed(seed)
