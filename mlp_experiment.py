@@ -40,6 +40,7 @@ GLOB_CFG = { #训练的参数配置
 
 seed_everything(GLOB_CFG['seed'])
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(device)
 
 
 if GLOB_CFG['processing_data']:

@@ -6,8 +6,11 @@ backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
 beautifulsoup4 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_croot-cdiouih5/beautifulsoup4_1650462164803/work
 bleach @ file:///opt/conda/conda-bld/bleach_1641577558959/work
 Bottleneck @ file:///opt/concourse/worker/volumes/live/d60669af-e41f-414a-5ae7-15dbf0f1c780/volume/bottleneck_1648028923597/work
+brotlipy==0.7.0
 certifi==2022.5.18.1
 cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/croot-2p6q7e2r/cffi_1642701115063/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+cryptography @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b470f7cb-c8f1-42c9-b84f-23789ea77e7c9difcqh4/croots/recipe/cryptography_1652101134392/work
 cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
 debugpy @ file:///opt/concourse/worker/volumes/live/32b11d06-4d64-4ec8-497a-cf4fc97343d2/volume/debugpy_1637091821874/work
 decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work
@@ -15,6 +18,7 @@ defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
 entrypoints @ file:///opt/concourse/worker/volumes/live/194c0a28-55ce-4e83-6a87-0d9f2e06ab2c/volume/entrypoints_1649926487944/work
 fastjsonschema @ file:///tmp/build/80754af9/python-fastjsonschema_1620414857593/work/dist
 fonttools==4.25.0
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
 importlib-metadata @ file:///opt/concourse/worker/volumes/live/4e1a3384-472f-4bcb-7776-cb0076aaea40/volume/importlib-metadata_1648562431336/work
 importlib-resources @ file:///tmp/build/80754af9/importlib_resources_1625135880749/work
 ipykernel @ file:///opt/concourse/worker/volumes/live/c21734a4-132a-471d-7fe9-76688d5488be/volume/ipykernel_1647000841085/work/dist/ipykernel-6.9.1-py3-none-any.whl
@@ -59,13 +63,16 @@ prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1633440160888/work
 ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 Pygments @ file:///opt/conda/conda-bld/pygments_1644249106324/work
+pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
 pyparsing @ file:///tmp/build/80754af9/pyparsing_1635766073266/work
 pyrsistent @ file:///opt/concourse/worker/volumes/live/24b7a9ab-37d8-463c-575f-69184f9cfbc8/volume/pyrsistent_1636111022304/work
+PySocks @ file:///opt/concourse/worker/volumes/live/ef943889-94fc-4539-798d-461c60b77804/volume/pysocks_1605305801690/work
 python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
 pytz @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_1caf090c-01b6-4973-adac-d2eb884a674e7zonb9eb/croots/recipe/pytz_1654762641285/work
 pyzmq @ file:///opt/concourse/worker/volumes/live/7dec6841-64b1-4d95-7226-ce37c6ca8915/volume/pyzmq_1638435000749/work
 qtconsole @ file:///opt/conda/conda-bld/qtconsole_1649078897110/work
 QtPy @ file:///opt/conda/conda-bld/qtpy_1649073884068/work
+requests @ file:///opt/conda/conda-bld/requests_1641824580448/work
 scikit-learn @ file:///opt/concourse/worker/volumes/live/4cd56902-441a-45fe-5fbc-9d70870a0183/volume/scikit-learn_1642617129649/work
 scipy @ file:///opt/concourse/worker/volumes/live/719943d5-6e16-41f8-68c4-f5820b33d300/volume/scipy_1641557782170/work
 Send2Trash @ file:///tmp/build/80754af9/send2trash_1632406701022/work
@@ -74,9 +81,14 @@ soupsieve @ file:///tmp/build/80754af9/soupsieve_1636706018808/work
 terminado @ file:///opt/concourse/worker/volumes/live/9f5c2831-bf90-4436-71cc-89a70d3fece2/volume/terminado_1644322615956/work
 testpath @ file:///tmp/build/80754af9/testpath_1624638946665/work
 threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
+torch==1.11.0
+torchaudio==0.11.0
+torchvision==0.12.0
 tornado @ file:///opt/concourse/worker/volumes/live/d531d395-893c-4ca1-6a5f-717b318eb08c/volume/tornado_1606942307627/work
+tqdm @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6cb3db64-b7e1-4db2-ab0b-f944920e5367lekntvc5/croots/recipe/tqdm_1650891088614/work
 traitlets @ file:///tmp/build/80754af9/traitlets_1636710298902/work
 typing_extensions @ file:///opt/conda/conda-bld/typing_extensions_1647553014482/work
+urllib3 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_92f3a881-8cf4-469b-8319-736ffa3c6d61ordl4zjw/croots/recipe/urllib3_1650639998913/work
 wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
 webencodings==0.5.1
 widgetsnbextension @ file:///opt/concourse/worker/volumes/live/d0e5739b-8078-4a19-69bb-be63aeed72df/volume/widgetsnbextension_1645009381873/work

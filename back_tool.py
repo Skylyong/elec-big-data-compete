@@ -118,7 +118,7 @@ class MyDataset(Dataset):
         features = self._df.X_seqs.values[idx]
         features = np.array(features).reshape(-1, 5)
         features = self.scaler.fit_transform(features)
-        features = features[:self.CFG['seq_length'],-1]
+        features = features[:self.CFG['seq_length'],-1] # 选取特征
         label_res = self.lookup_label(label)
         return features, label_res
 

@@ -10,6 +10,7 @@ from torch.optim import AdamW
 from back_tool import seed_everything, train_model, test_model, processing_data, MyDataset
 from models import LstmNeuralNet
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(device)
 
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
